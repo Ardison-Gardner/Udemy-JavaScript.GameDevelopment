@@ -1,8 +1,8 @@
 var canvas = document.getElementById('myCanvas');
-var ctx = canvas.getContext('2d');
+var context = canvas.getContext('2d');
 
-ctx.beginPath();
-ctx.rect(20, 40, 100, 50);
-ctx.fillStyle = '#FF0000';
-ctx.fill();
-ctx.closePath();
+context.beginPath();
+context.rect(25, 50, 50, 25);
+context.fillStyle = '#FF00FF';
+context.fill();
+context.closePath();
