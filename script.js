@@ -10,6 +10,8 @@ let dY = -2;
 let paddleHeight = 10;
 let paddleWidth = 75;
 let paddlePosX = canvas.width - paddleWidth / 2;
+let rightMove = false;
+let leftMove = false;
 
 //Constants.
 const ballRadius = 10;
@@ -31,17 +33,45 @@ const drawPaddle = () => {
   ctx.closePath();
 };
 
+const keyDownHandler = e => {
+  if (e.keyCode === 39) {
+    rightMove = true;
+  } else if (e.keyCode === 37) {
+    leftMove = true;
+  }
+};
+
+const keyUpHandler = e => {
+  if (e.keyCode === 39) {
+    rightMove = false;
+  } else if (e.keyCode === 37) {
+    leftMove = false;
+  }
+};
+
+//Canvas renderer.
+
 const render = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBall();
+  drawPaddle();
   if (yAxis + dY < ballRadius || yAxis + dY > canvas.height - ballRadius) {
     dY = -dY;
   }
   if (xAxis + dX < ballRadius || xAxis + dX > canvas.width - ballRadius) {
     dX = -dX;
   }
+  if (rightMove && paddlePosX < canvas.width - paddleWidth) {
+    paddlePosX += 7;
+  } else if (leftMove && paddlePosX > 0) {
+    paddlePosX -= 7;
+  }
   xAxis += dX;
   yAxis += dY;
 };
 
 setInterval(render, 10);
+
+//Event listeners.
+document.addEventListener('keydown', keyDownHandler);
+document.addEventListener('keyup', keyUpHandler);
