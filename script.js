@@ -16,7 +16,7 @@ let leftMove = false;
 //Constants.
 const ballRadius = 10;
 
-//Functions
+// Game functions
 const drawBall = () => {
   ctx.beginPath();
   ctx.arc(xAxis, yAxis, ballRadius, 0, Math.PI * 2);
@@ -32,6 +32,8 @@ const drawPaddle = () => {
   ctx.fill();
   ctx.closePath();
 };
+
+// Key handlers.
 
 const keyDownHandler = e => {
   if (e.keyCode === 39) {
