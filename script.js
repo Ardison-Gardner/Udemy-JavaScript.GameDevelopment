@@ -23,10 +23,10 @@ const drawBall = () => {
 const render = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBall();
-  if (yAxis + dY < 5 || yAxis + dY > canvas.height - 5) {
+  if (yAxis + dY < ballRadius || yAxis + dY > canvas.height - ballRadius) {
     dY = -dY;
   }
-  if (xAxis + dX < 5 || xAxis + dX > canvas.width - 5) {
+  if (xAxis + dX < ballRadius || xAxis + dX > canvas.width - ballRadius) {
     dX = -dX;
   }
   xAxis += dX;
