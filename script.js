@@ -53,20 +53,27 @@ const keyUpHandler = e => {
 
 //Canvas renderer.
 
+// eslint-disable-next-line complexity
 const render = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBall();
   drawPaddle();
+
   // Ball behavior.
   if (yAxis + dY < ballRadius) {
     dY = -dY;
   } else if (yAxis + dY > canvas.height - ballRadius) {
-    alert('GAME OVER');
-    document.location.reload();
+    if (xAxis > paddlePosX && xAxis < paddlePosX + paddleWidth) {
+      dY = -dY;
+    } else {
+      alert('GAME OVER');
+      document.location.reload();
+    }
   }
   if (xAxis + dX < ballRadius || xAxis + dX > canvas.width - ballRadius) {
     dX = -dX;
   }
+
   // Player input.
   if (rightMove && paddlePosX < canvas.width - paddleWidth) {
     paddlePosX += 7;
