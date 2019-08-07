@@ -3,6 +3,8 @@ var ctx = canvas.getContext('2d');
 
 let xAxis = canvas.width / 2;
 let yAxis = canvas.height - 30;
+let dX = -2;
+let dY = -2;
 
 const draw = () => {
   ctx.beginPath();
@@ -10,6 +12,8 @@ const draw = () => {
   ctx.fillStyle = '#0095DD';
   ctx.fill();
   ctx.closePath();
+  xAxis += dX;
+  yAxis += dY;
 };
 
 setInterval(draw, 10);
