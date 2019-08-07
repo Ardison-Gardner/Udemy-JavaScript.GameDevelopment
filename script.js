@@ -57,12 +57,14 @@ const render = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBall();
   drawPaddle();
+  // Ball behavior.
   if (yAxis + dY < ballRadius || yAxis + dY > canvas.height - ballRadius) {
     dY = -dY;
   }
   if (xAxis + dX < ballRadius || xAxis + dX > canvas.width - ballRadius) {
     dX = -dX;
   }
+  // Player input.
   if (rightMove && paddlePosX < canvas.width - paddleWidth) {
     paddlePosX += 7;
   } else if (leftMove && paddlePosX > 0) {
