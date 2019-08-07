@@ -7,6 +7,7 @@ let dX = -2;
 let dY = -2;
 
 const draw = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.beginPath();
   ctx.arc(xAxis, yAxis, 10, 0, Math.PI * 2);
   ctx.fillStyle = '#0095DD';
