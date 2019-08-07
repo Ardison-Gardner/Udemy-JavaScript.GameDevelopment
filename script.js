@@ -58,8 +58,11 @@ const render = () => {
   drawBall();
   drawPaddle();
   // Ball behavior.
-  if (yAxis + dY < ballRadius || yAxis + dY > canvas.height - ballRadius) {
+  if (yAxis + dY < ballRadius) {
     dY = -dY;
+  } else if (yAxis + dY > canvas.height - ballRadius) {
+    alert('GAME OVER');
+    document.location.reload();
   }
   if (xAxis + dX < ballRadius || xAxis + dX > canvas.width - ballRadius) {
     dX = -dX;
