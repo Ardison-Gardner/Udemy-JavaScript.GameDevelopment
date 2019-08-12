@@ -98,7 +98,7 @@ const render = () => {
     if (xAxis > paddlePosX && xAxis < paddlePosX + paddleWidth) {
       dY = -dY;
     } else {
-      alert('GAME OVER');
+      // alert('GAME OVER');
       document.location.reload();
     }
   }
