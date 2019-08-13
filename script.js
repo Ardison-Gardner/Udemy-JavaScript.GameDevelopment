@@ -70,13 +70,16 @@ const collisionDetection = () => {
   for (let c = 0; c < brickColumnCount; c++) {
     for (let r = 0; r < brickRowCount; r++) {
       let brick = bricks[c][r];
-      if (
-        xAxis > brick.x &&
-        xAxis < brick.x + brickWidth &&
-        yAxis > brick.y &&
-        yAxis < brick.y + brickHeight
-      ) {
-        dY = -dY;
+      if (brick.status === 1) {
+        if (
+          xAxis > brick.x &&
+          xAxis < brick.x + brickWidth &&
+          yAxis > brick.y &&
+          yAxis < brick.y + brickHeight
+        ) {
+          brick.status = 0;
+          dY = -dY;
+        }
       }
     }
   }
