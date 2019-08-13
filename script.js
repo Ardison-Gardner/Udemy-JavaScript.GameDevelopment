@@ -23,7 +23,7 @@ let bricks = [];
 for (let c = 0; c < brickColumnCount; c++) {
   bricks[c] = [];
   for (let r = 0; r < brickRowCount; r++) {
-    bricks[c][r] = { x: 0, y: 0 };
+    bricks[c][r] = { x: 0, y: 0, status: 1 };
   }
 }
 
@@ -74,7 +74,6 @@ const collisionDetection = () => {
         yAxis > brick.y &&
         yAxis < brick.y + brickHeight
       ) {
-        console.log('Hit: ', brick);
         dY = -dY;
       }
     }
@@ -115,7 +114,7 @@ const render = () => {
     if (xAxis > paddlePosX && xAxis < paddlePosX + paddleWidth) {
       dY = -dY;
     } else {
-      // alert('GAME OVER');
+      alert('GAME OVER');
       document.location.reload();
     }
   }
