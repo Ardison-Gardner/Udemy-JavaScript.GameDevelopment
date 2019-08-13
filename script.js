@@ -54,12 +54,29 @@ const drawBricks = () => {
       let brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
       let brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
       bricks[c][r].x = brickX;
-      bricks[c][r].z = brickY;
+      bricks[c][r].y = brickY;
       ctx.beginPath();
       ctx.rect(brickX, brickY, brickWidth, brickHeight);
       ctx.fillStyle = '#ff0000';
       ctx.fill();
       ctx.closePath();
+    }
+  }
+};
+
+const collisionDetection = () => {
+  for (let c = 0; c < brickColumnCount; c++) {
+    for (let r = 0; r < brickRowCount; r++) {
+      let brick = bricks[c][r];
+      if (
+        xAxis > brick.x &&
+        xAxis < brick.x + brickWidth &&
+        yAxis > brick.y &&
+        yAxis < brick.y + brickHeight
+      ) {
+        console.log('Hit: ', brick);
+        dY = -dY;
+      }
     }
   }
 };
@@ -90,7 +107,7 @@ const render = () => {
   drawBall();
   drawPaddle();
   drawBricks();
-
+  collisionDetection();
   // Ball behavior.
   if (yAxis + dY < ballRadius) {
     dY = -dY;
