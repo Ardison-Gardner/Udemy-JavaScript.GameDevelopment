@@ -26,6 +26,7 @@ for (let c = 0; c < brickColumnCount; c++) {
     bricks[c][r] = { x: 0, y: 0, status: 1 };
   }
 }
+var score = 0;
 
 //Constants.
 const ballRadius = 10;
@@ -79,10 +80,17 @@ const collisionDetection = () => {
         ) {
           brick.status = 0;
           dY = -dY;
+          score++;
         }
       }
     }
   }
+};
+
+const drawScore = () => {
+  ctx.font = '16px Ariel';
+  ctx.fillStyle = '#ff00ff';
+  ctx.fillText('Score: ' + score, 8, 20);
 };
 
 // Key handlers.
@@ -112,6 +120,7 @@ const render = () => {
   drawPaddle();
   drawBricks();
   collisionDetection();
+  drawScore();
   // Ball behavior.
   if (yAxis + dY < ballRadius) {
     dY = -dY;
