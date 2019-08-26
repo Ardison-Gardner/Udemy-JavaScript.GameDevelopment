@@ -7,9 +7,10 @@ let xAxis = canvas.width / 2;
 let yAxis = canvas.height - 30;
 let dX = -2;
 let dY = -2;
+let ballRadius = 10;
 let paddleHeight = 10;
 let paddleWidth = 75;
-let paddlePosX = canvas.width - paddleWidth / 2;
+let paddlePosX = (canvas.width - paddleWidth) / 2;
 let rightMove = false;
 let leftMove = false;
 let brickRowCount = 3;
@@ -27,9 +28,6 @@ for (let c = 0; c < brickColumnCount; c++) {
   }
 }
 var score = 0;
-
-//Constants.
-const ballRadius = 10;
 
 // Game functions
 
@@ -116,9 +114,9 @@ const keyUpHandler = e => {
 };
 
 const mouseHandler = e => {
-  const relativeX = e.clientX - canvas.offsetLeft;
+  let relativeX = e.clientX - canvas.offsetLeft;
   if (relativeX > 0 && relativeX < canvas.width) {
-    paddleX = relativeX - paddleWidth / 2;
+    paddlePosX = relativeX - paddleWidth / 2;
   }
 };
 
@@ -162,3 +160,4 @@ setInterval(render, 10);
 //Event listeners.
 document.addEventListener('keydown', keyDownHandler);
 document.addEventListener('keyup', keyUpHandler);
+document.addEventListerner('mousemove', mouseHandler);
