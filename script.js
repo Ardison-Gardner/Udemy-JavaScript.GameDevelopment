@@ -113,9 +113,12 @@ const keyUpHandler = e => {
   }
 };
 
-const mouseHandler = e => {
+const mouseMoveHandler = e => {
   let relativeX = e.clientX - canvas.offsetLeft;
-  if (relativeX > 0 && relativeX < canvas.width) {
+  if (
+    relativeX > 0 + paddleWidth / 2 &&
+    relativeX < canvas.width - paddleWidth / 2
+  ) {
     paddlePosX = relativeX - paddleWidth / 2;
   }
 };
@@ -160,4 +163,4 @@ setInterval(render, 10);
 //Event listeners.
 document.addEventListener('keydown', keyDownHandler);
 document.addEventListener('keyup', keyUpHandler);
-document.addEventListerner('mousemove', mouseHandler);
+document.addEventListener('mousemove', mouseMoveHandler);
